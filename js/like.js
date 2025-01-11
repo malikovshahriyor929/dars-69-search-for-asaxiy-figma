@@ -2,7 +2,8 @@ let like_product = document.querySelector(".like_product");
 let like_p = document.querySelector(".like_p");
 
 let likeData = JSON.parse(localStorage.getItem("like")) || [];
-
+let search_input = document.querySelector(".search_input");
+let search_form = document.querySelector(".search_form");
 function getData(data) {
   data.forEach((value) => {
     let likeProduct = document.createElement("div");
@@ -68,16 +69,31 @@ function deleteFunc(id) {
   window.location.reload();
 }
 function notLike() {
-    let not_have_like = document.querySelector(".not_have_like");
-    if (likeData.length == 0) {
-      not_have_like.style.display = "flex";
-    }  
+  let not_have_like = document.querySelector(".not_have_like");
+  if (likeData.length == 0) {
+    not_have_like.style.display = "flex";
+  }
 }
 function likelength() {
   let likelength = likeData.length;
   like_p.innerHTML = likelength;
 }
 
+function search(data) {
+  search_form.addEventListener("click", (e) => {
+    e.preventDefault();
+    let id = e.target.id;
+    if (search_input.value) {
+      let searchinput = search_input.value.toLowerCase().trim();
+      let se = data.filter((value) =>
+        value.name.toLowerCase().trim().includes(searchinput)
+      );
+      like_product.innerHTML = "";
+      getData(se);
+    }
+  });
+}
+search(likeData);
 likelength();
-notLike()
+notLike();
 getData(likeData);
