@@ -100,35 +100,17 @@ function search(data) {
     let se = data.filter((value) => value.name.toLowerCase().trim().includes(searchinput));
     cards.innerHTML = "";
     getData(se);
+    }else{
+      request({ url: "figma_asaxiy" }).then((data) => {
+        getData(data);
+        Filter(data);
+        search(data);
+      });
     }
   });
 
-  // filter_header.addEventListener("click", (e) => {
-  //   let id = e.target.id;
-  //   if (id !== "" && id !== "all") {
-  //     let fill = data.filter((value) => value.type === id);
-  //     cards.innerHTML = "";
-  //     getData(fill);
-  //   } else if (id === "all") {
-  //     cards.innerHTML = "";
-  //     getData(data);
-  //   }
-  // });
 }
-// function search(data) {
-//   search_form.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     const search = search_input.value;
-//     const searchdata = data.filter((value) => {
-//       let kichckina = value.name.toLowerCase().trim();
-//       return kichckina.includes(search.toLowerCase().trim());
-//     });
-//     cards.innerHTML = "";
-//     if (searchdata.length !== 0) {
-//       getData(searchdata);
-//     }
-//   });
-// }
+
 
 function addToLIke(data) {
   like = [...like, data];
