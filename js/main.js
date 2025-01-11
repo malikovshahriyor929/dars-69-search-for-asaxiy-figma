@@ -21,7 +21,7 @@ function access() {
   UserLogin.innerHTML = JSON.parse(localStorage.getItem("name"));
   UserLogin2.innerHTML = JSON.parse(localStorage.getItem("name"));
 }
-export { access };
+// export { access };
 
 // fetch
 request({ url: "figma_asaxiy" }).then((data) => {
@@ -33,7 +33,11 @@ request({ url: "figma_asaxiy" }).then((data) => {
 // load
 function loading(action) {
   let loading = document.querySelector(".loading");
-  action ? (loading.style.display = "flex") : (loading.style.display = "none");
+  if (action) {
+    loading.style.display = "flex";
+  } else {
+    loading.style.display = "none";
+  }
 }
 
 // GEt
@@ -95,12 +99,14 @@ function search(data) {
   search_form.addEventListener("click", (e) => {
     e.preventDefault();
     let id = e.target.id;
-    if (search_input.value)  {
-    let searchinput = search_input.value.toLowerCase().trim()
-    let se = data.filter((value) => value.name.toLowerCase().trim().includes(searchinput));
-    cards.innerHTML = "";
-    getData(se);
-    }else{
+    if (search_input.value) {
+      let searchinput = search_input.value.toLowerCase().trim();
+      let se = data.filter((value) =>
+        value.name.toLowerCase().trim().includes(searchinput)
+      );
+      cards.innerHTML = "";
+      getData(se);
+    } else {
       request({ url: "figma_asaxiy" }).then((data) => {
         getData(data);
         Filter(data);
@@ -108,9 +114,7 @@ function search(data) {
       });
     }
   });
-
 }
-
 
 function addToLIke(data) {
   like = [...like, data];

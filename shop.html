@@ -23,9 +23,11 @@
         >
           <i class="fa-solid fa-bars"></i> </label
         ><!-- logo -->
+       <a href="./index.html">
         <div class="flex items-center gap-5">
           <img src="./assets/svg/Link.svg" alt="" />
         </div>
+       </a>
         <!-- kategory -->
         <div
           class="rounded-md bg-primary py-2 px-4 flex items-center gap-2 max-[1129px]:hidden"
@@ -34,18 +36,18 @@
           <p class="text-[14px] text-white">Категории</p>
         </div>
         <!-- seach -->
-        <div
-          class="rounded-xl border-2 border-primary flex items-center gap-2 w-[600px] max-[1129px]:w-[270px] max-[1129px]:hidden"
+        <form
+          class="search_form rounded-xl border-2 border-primary flex items-center gap-2 w-[600px] max-[1129px]:w-[270px] max-[1129px]:hidden"
         >
           <input
             type="text"
-            class="rounded-xl w-full py-2 px-4"
+            class="rounded-xl w-full outline-none search_input py-2 px-4"
             placeholder="Поиск..."
           />
           <button class="text-white rounded-r-lg bg-primary py-2 px-4">
             Искать
           </button>
-        </div>
+        </form>
         <!-- buttons -->
         <input id="check" class="hidden" type="checkbox" />
         <div class="links flex items-center gap-5">
@@ -169,8 +171,7 @@
           class="grid grid-cols-[3fr,1fr] gap-5 items-start relative max-[1129px]:grid-cols-1"
         >
           <div class="products flex flex-col gap-5 max-[1129px]:w-full">
-            <div
-              class="error text-center flex flex-col items-center gap-3 justify-center"
+            <div class="errorcart text-center hidden flex-col items-center gap-3 justify-center"
             >
               <div class="text-6xl text-gray-400 mb-6">🛒</div>
               <h1 class="text-2xl font-semibold mb-2">Your cart is empty</h1>
